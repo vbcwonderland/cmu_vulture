@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="header-with-logo">
+        <img src="{{ url_for('static', filename='organizer_logo.png') }}" alt="Organizer Logo" class="logo" >
+        <h1>Add a New Food Event</h1>
+    </div>
+    <h1>Add a New Food Event</h1>
+    <form action="{{ url_for('organizer') }}" method="post" enctype="multipart/form-data">
+        <label for="event_name">Event Name:</label>
+        <input type="text" id="event_name" name="event_name" required>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required></textarea>
+
+        <label for="image">Food Image (optional):</label>
+        <input type="file" id="image" name="image">
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" placeholder="Rangos, UC Building, CMU" required>
+
+        <button type="submit">Submit</button>
+    </form>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>

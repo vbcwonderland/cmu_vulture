@@ -1,0 +1,9 @@
+.header-with-logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 200px; /* Set logo height to 200px */
+    margin-right: 20px; /* Adjust spacing between logo and header text */
+}

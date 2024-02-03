@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CMU Vulture Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Welcome to CMU Vulture</h1>
+    <h2>Available Food Events</h2>
+    <ul>
+        {% for event_name, event_details in food_events.items() %}
+        <li>
+            <strong>{{ event_name }}</strong> - <em>{{ event_details.description }}</em>
+            - <a href="{{ url_for('student', event_name=event_name) }}">Join Queue</a>
+        </li>
+        {% else %}
+        <li>No food events available right now.</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('organizer') }}">+ Add New Event</a>
+</body>
+</html>

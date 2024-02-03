@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="header-with-logo">
+        <img src="{{ url_for('static', filename='student_logo.png') }}" alt="Student Logo" class="logo" >
+        <h1>Join the Queue for {{ event_name }}</h1>
+    </div>
+    <h1>Join the Queue for {{ event_name }}</h1>
+
+    <!-- Queue Details -->
+    <div>
+        <h2>Queue Details</h2>
+        <p>Total number of people in the queue: <strong>{{ total_in_queue }}</strong></p>
+        {% if queue_position %}
+        <p>Your position in the queue: <strong>{{ queue_position }}</strong></p>
+        <p>Number of people ahead of you: <strong>{{ total_ahead_in_queue }}</strong></p>
+        {% else %}
+        <p>Enter your name to see your position in the queue and how many are ahead of you.</p>
+        {% endif %}
+    </div>
+
+    <!-- Display the image if available -->
+    {% if image_url %}
+    <div>
+        <img src="{{ image_url }}" alt="Food image" style="max-width: 600px; height: auto;">
+    </div>
+    {% endif %}
+
+    <!-- Display the map link if location is available -->
+    <!-- Display the map link if location is available -->
+    {% if location %}
+    <div>
+        <h3>Event Location</h3>
+        <p>Check out the event location on <a href="https://www.google.com/maps/place/Baker+Hall/@40.4413345,-79.9442745,17z/data=!3m2!4b1!5s0x8834f220faca6c71:0x6657b762d2a9386a!4m6!3m5!1s0x8834f220c39f5479:0x13a0f93d36e6191e!8m2!3d40.4413345!4d-79.9442745!16s%2Fm%2F03xkgkx?authuser=0&entry=ttu" target="_blank">Google Maps</a>.</p>
+    </div>
+    {% endif %}
+
+    <!-- Form to join the queue -->
+    <form action="{{ url_for('student', event_name=event_name) }}" method="POST">
+        <label for="student_name">Your Name:</label>
+        <input type="text" id="student_name" name="student_name" required>
+        <button type="submit">Join Queue</button>
+    </form>
+
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>
